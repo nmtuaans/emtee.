@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<!-- <link rel="stylesheet" href="style.css"> -->
+	<link rel="shortcut icon" type="image" href="img/cursor.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+	
+body
+{
+	margin: 0;
+	background-image: url('img/bg.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #0D0D0D;
+	z-index: -50;
+}
+
+.grid
+{
+	z-index: 1;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(19, 1fr);
+	padding: 2vw;
+	box-sizing: border-box;
+	gap: 1vw;
+	grid-template-rows: repeat(19, 1fr);
+}
+
+div.cursor img
+{
+	mix-blend-mode: difference;
+	position: absolute;
+	top: 1vw;
+	left: 1vw;
+	width: 2vw;
+	height: 2vw;
+	z-index: 100;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+}
+
+.logo:hover
+{
+	color:#0D0D0D;
+}
+
+.logo
+{
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	font-family: 'Inter', sans-serif;
+	font-size: 5vw;
+	font-weight: 700;
+	align-self: center;
+	color: #F2F2F2;
+	text-decoration: none;
+	position: relative;
+
+}
+
+.logo:before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.logo:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.logo:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: #F5CC00;
+  z-index: -1;
+  transition: transform .3s ease;
+}
+
+.about
+{
+	grid-column-end: 20;
+	grid-column-start: 18;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	justify-self: end;
+	align-self: center;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	color:#F5CC00;
+	text-decoration: none;
+}
+
+.contact
+{
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 18;
+	grid-row-end: 20;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	justify-self: start;
+	align-self: center;
+	color: #F2F2F2;
+	text-decoration: none;
+}
+
+.works
+{
+	grid-column-end: 20;
+	grid-column-start: 18;
+	grid-row-start: 18;
+	grid-row-end: 20;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	justify-self: end;
+	align-self: center;
+	color: #F2F2F2;
+	text-decoration: none;
+}
+
+span {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+span:before, span:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: #F5CC00;
+}
+
+span:before {
+  left: -2px;
+}
+span:after {
+  right: 2px;
+  background: #F5CC00;
+  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:before {
+  background: #F5CC00;
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
+}
+
+.box {
+	grid-column-start: 6;
+	grid-column-end: 15;
+	grid-row-start: 2;
+	grid-row-end: 19;
+  background-color: #0D0D0D;
+  opacity: 0.8;
+  border-radius: 1vw;
+	box-shadow: 5px 5px 15px #F2F2F2;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	z-index: -10;
+}
+
+.mtn {
+	color: #F5CC00;
+	font-family: 'Inter', sans-serif;
+	font-size: 8vw;
+	font-weight: 700;
+	grid-column-start: 7;
+	grid-column-end: 15;
+	grid-row-start: 3;
+	grid-row-end: 11;
+	line-height: 0.8;
+	margin-left:-2vw;
+	justify-self: start;
+	align-self: flex-start;
+	text-align: start;
+	z-index: 10;
+
+}
+
+.bio {
+	color: #F2F2F2;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.6vw;
+	font-weight: 400;
+	grid-column-start: 7;
+	grid-column-end: 14;
+	grid-row-start: 12;
+	grid-row-end: 14;
+	margin-left:-2vw;
+	justify-self: start;
+	text-align: start;
+	z-index: 10;
+}
+
+.sw {
+	color: #D9D9D9;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 4vw;
+	font-weight: 700;
+	grid-column-start: 7;
+	grid-column-end: 14;
+	grid-row-start: 3;
+	grid-row-end: 11;
+	margin-left:-2vw;
+	justify-self: end;
+	align-self: start;
+	text-align: end;
+	z-index: 10;
+}
+
+ @media screen and (max-width: 1100px) {
+
+  .logo {
+    font-size: 8vw;
+  	grid-column-start: 1;
+		grid-column-end: 4;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 2.8vw;
+  }
+
+  .about {
+    font-size: 2.8vw;
+  }
+
+  .contact {
+    font-size: 2.8vw;
+  }
+	}
+
+@media screen and (max-width: 800px) {
+
+  .logo {
+    font-size: 11vw;
+  	grid-column-start: 1;
+		grid-column-end: 5;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 3.8vw;
+  }
+
+  .about {
+    font-size: 3.8vw;
+  }
+
+  .contact {
+    font-size: 3.8vw;
+  }
+	}
+
+  @media screen and (max-width: 500px) {
+
+  .logo {
+    font-size: 14vw;
+  	grid-column-start: 1;
+		grid-column-end: 6;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 5.8vw;
+  }
+
+  .about {
+    font-size: 5.8vw;
+  }
+
+  .contact {
+    font-size: 5.8vw;
+  }
+	}
+
+	</style>
+
+	<title>ABOUT</title>
+
+</head>
+
+<body>
+
+	<div class="grid">
+		
+			<a href="index.html" class="logo">m<b style="font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b>.</a>
+		
+		<a href="work_00.html" class="works">
+			<span>WORKS<span>
+		</a>
+		
+		<a href="about.html" class="about">
+			<span>ABOUT<span>
+		</a>
+		
+		<a href="contact.html" class="contact">
+			<span>CONTACT<span>
+		</a>
+
+
+		<div class="box"></div>
+
+		<div class="mtn"><b style="color: #D9D9D9;"> manh </b><br><b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇuan</b><br> <b style="color: #D9D9D9;">nguyen</b></div>
+
+		<div class="sw">see<br><a href="work_00.html" style="color: #F5CC00;">WORKS</a>
+		</div>
+			
+		<div class="bio">
+		<b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b> is a <b style="color: #0D0D0D; background: #F5CC00;">digital designer</b> based in melbourne.<br>
+		<b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b> spends his time making <b style="color: #F5CC00;"> videos</b> & <b style="color: #F5CC00;">visuals</b>.<br>
+		<b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b> also does <b style="color: #0D0D0D; background: #F5CC00;">UX/UI</b>, <b style="color: #0D0D0D; background: #F5CC00;">vj-ing</b>, <b style="color: #0D0D0D; background: #F5CC00;">sound design</b>, etc.<br>
+		<b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b> believes in having <b style="color: #F5CC00;">fun</b> while being <b style="color: #F5CC00;">creative</b>.<br>
+		<b style="color: #F5CC00; font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b> thrives on <b style="color: #0D0D0D; background: #F5CC00;">collaborating</b> & <b style="color: #0D0D0D; background: #F5CC00;">sharing ideas</b>.<br>
+		see his <a href="CV.pdf" style="color: #F5CC00; font-weight: 700;" target="_blank">curriculum vitae</a> to find more info.
+		</div>
+
+	</div>
+
+	<div class="cursor">
+		<img src="img/cursor.png">
+	</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="cursor.js"></script>

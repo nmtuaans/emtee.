@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<!-- <link rel="stylesheet" href="style.css"> -->
+	<link rel="shortcut icon" type="image" href="img/cursor.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+	
+body
+{
+	margin: 0;
+	background-image: url('img/bg.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color: #0D0D0D;
+	z-index: -50;
+}
+
+.grid
+{
+	z-index: 1;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(19, 1fr);
+	padding: 2vw;
+	box-sizing: border-box;
+	gap: 1vw;
+	grid-template-rows: repeat(19, 1fr);
+}
+
+div.cursor img
+{
+	mix-blend-mode: difference;
+	position: absolute;
+	top: 1vw;
+	left: 1vw;
+	width: 2vw;
+	height: 2vw;
+	z-index: 100;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+}
+
+.logo:hover
+{
+	color:#0D0D0D;
+}
+
+.logo
+{
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	font-family: 'Inter', sans-serif;
+	font-size: 5vw;
+	font-weight: 700;
+	align-self: center;
+	color: #F2F2F2;
+	text-decoration: none;
+	position: relative;
+
+}
+
+.logo:before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.logo:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.logo:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: #F5CC00;
+  z-index: -1;
+  transition: transform .3s ease;
+}
+
+.about
+{
+	grid-column-end: 20;
+	grid-column-start: 18;
+	grid-row-start: 1;
+	grid-row-end: 3;
+	justify-self: end;
+	align-self: center;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	color:#F2F2F2;
+	text-decoration: none;
+}
+
+.contact
+{
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 18;
+	grid-row-end: 20;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	justify-self: start;
+	align-self: center;
+	color: #F5CC00;
+	text-decoration: none;
+}
+
+.works
+{
+	grid-column-end: 20;
+	grid-column-start: 18;
+	grid-row-start: 18;
+	grid-row-end: 20;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1.8vw;
+	justify-self: end;
+	align-self: center;
+	color: #F2F2F2;
+	text-decoration: none;
+}
+
+span {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+span:before, span:after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: #F5CC00;
+}
+
+span:before {
+  left: -2px;
+}
+span:after {
+  right: 2px;
+  background: #F5CC00;
+  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:before {
+  background: #F5CC00;
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+span:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
+}
+
+.box {
+	font-family: 'Inter', sans-serif;
+	font-size: 18vw;
+	font-weight: 700;
+	color: #F5CC00;
+	text-align: center;
+	place-self: center;
+	grid-column-start:1;
+	grid-column-end: 20;
+	grid-row-start: 3;
+	grid-row-end: 18;
+}
+
+.gmail {
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 5vw;
+	font-weight: 400;
+	color: #F2F2F2;
+	text-align: center;
+	place-self: center;
+	grid-column-start:1;
+	grid-column-end: 20;
+	grid-row-start: 3;
+	grid-row-end: 18;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #0D0D0D;
+}
+
+.gmail:hover {
+	color: white;
+	background-color: #0D0D0D;
+}
+
+.box1
+{
+	grid-column-start: 3;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 7;
+	place-self: center;
+	align-self: center;
+	filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transition: all .4s ease-in-out;
+}
+
+.box1:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.01);
+}
+
+.box2
+{
+	grid-column-start: 3;
+	grid-column-end: 6;
+	grid-row-start: 14;
+	grid-row-end: 20;
+	place-self: center;
+	align-self: center;
+	filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transition: all .4s ease-in-out;
+}
+
+.box2:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.01);
+}
+
+.box3
+{
+	grid-column-start: 15;
+	grid-column-end: 18;
+	grid-row-start: 1;
+	grid-row-end: 7;
+	place-self: center;
+	align-self: center;
+	filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transition: all .4s ease-in-out;
+}
+
+.box3:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.01);
+}
+
+.box4
+{
+	grid-column-start: 15;
+	grid-column-end: 18;
+	grid-row-start: 14;
+	grid-row-end: 20;
+	place-self: center;
+	align-self: center;
+	filter: gray;
+    -webkit-filter: grayscale(1);
+    -webkit-transition: all .4s ease-in-out;
+}
+
+.box4:hover {
+    filter: none;
+    -webkit-filter: grayscale(0);
+    -webkit-transform: scale(1.01);
+}
+
+.form {
+	line-height: 1;
+	font-family: 'Inter', sans-serif;
+	font-size: 2vw;
+	font-weight: 700;
+	color: #F5CC00;
+	grid-column-start: 8;
+	grid-column-end: 13;
+	grid-row-start: 1;
+	grid-row-end: 7;
+	align-self: center;
+	justify-self: center;
+	text-align: center;
+}
+
+.git {
+	mix-blend-mode: difference;
+	font-family: 'Libre Baskerville', serif;
+	font-style: italic;
+	font-size: 4vw;
+	font-weight: 400;
+	color: #F2F2F2;
+	grid-column-start: 8;
+	grid-column-end: 13;
+	grid-row-start: 14;
+	grid-row-end: 20;
+	text-align: center;
+	align-self: center;
+	justify-self: center;
+}
+
+.name {
+	border-radius: 0.2vw;
+	height: 2vw;
+	width: 10vw;
+	background-blend-mode: luminosity;
+	background-color: #0D0D0D;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1vw;
+	font-weight: 400;
+	color: #F2F2F2;
+}
+
+.email {
+	border-radius: 0.2vw;
+	height: 2vw;
+	width: 10vw;
+	justify-self: self-end;
+	background-blend-mode: luminosity;
+	background-color: #0D0D0D;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1vw;
+	font-weight: 400;
+	color: #F2F2F2;
+}
+
+.message {
+	border-radius: 0.2vw;
+	width: 21vw;
+	height: 3vw;
+	background-blend-mode: luminosity;
+	background-color: #0D0D0D;
+	font-family: 'M PLUS 1 Code', monospace;
+	font-size: 1vw;
+	font-weight: 400;
+	color: #F2F2F2;
+}
+
+.send {
+	border-radius: 0.2vw;
+	background-color: #0D0D0D;
+	height: 2vw;
+	width: 5vw;
+	text-align: center;
+	color: #D9D9D9;
+	border: solid 0.2vw #D9D7D7;
+  font-size: 1vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.reset {
+	border-radius: 0.2vw;
+	background-color: #0D0D0D;
+	height: 2vw;
+	width: 5vw;
+	text-align: center;
+	color: #D9D9D9;
+	align-self: center;
+	color: #D9D7D7;
+	border: solid 0.2vw #D9D7D7;
+  font-size: 1vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.send:hover, .reset:hover {
+	border: solid 0.2vw #F2CB07;
+  color: #F2CB07;
+}
+
+
+.photo>img 
+{
+	border-radius: 50%;
+	box-shadow: 5px 5px 15px #F5CC00;
+	object-fit: cover;
+	width: 100%;
+	max-width: 100%;
+	position: relative;
+	z-index: 40;
+}
+
+ @media screen and (max-width: 1100px) {
+
+  .logo {
+    font-size: 8vw;
+  	grid-column-start: 1;
+		grid-column-end: 4;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 2.8vw;
+  }
+
+  .about {
+    font-size: 2.8vw;
+  }
+
+  .contact {
+    font-size: 2.8vw;
+  }
+	}
+
+@media screen and (max-width: 800px) {
+
+  .logo {
+    font-size: 11vw;
+  	grid-column-start: 1;
+		grid-column-end: 5;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 3.8vw;
+  }
+
+  .about {
+    font-size: 3.8vw;
+  }
+
+  .contact {
+    font-size: 3.8vw;
+  }
+	}
+
+  @media screen and (max-width: 500px) {
+
+  .logo {
+    font-size: 14vw;
+  	grid-column-start: 1;
+		grid-column-end: 6;
+		grid-row-start: 1;
+		grid-row-end: 3;
+  }
+
+  .works {
+    font-size: 5.8vw;
+  }
+
+  .about {
+    font-size: 5.8vw;
+  }
+
+  .contact {
+    font-size: 5.8vw;
+  }
+	}
+
+	</style>
+
+	<title>CONTACT</title>
+
+</head>
+
+<body>
+
+
+	<div class="grid">
+		
+		<a href="index.html" class="logo">m<b style="font-family:'Libre Baskerville', serif; font-style: italic; font-weight: 400;">ʇ</b>.</a>
+		
+		<a href="work_00.html" class="works">
+			<span>WORKS<span>
+		</a>
+		
+		<a href="about.html" class="about">
+			<span>ABOUT<span>
+		</a>
+
+		<a href="https://www.linkedin.com/in/nmtuaans/" target="_blank" class="box1">
+			<div class="photo">
+				<img src="img/1.png">
+			</div>
+		</a>
+
+		<a href="https://www.instagram.com/nmtuaans/" target="_blank" class="box2">
+			<div class="photo">
+				<img src="img/2.png">
+			</div>
+		</a>
+
+		<a href="https://soundcloud.com/nmtuaans" target="_blank" class="box3">
+			<div class="photo">
+				<img src="img/3.png">
+			</div>
+		</a>
+
+		<a href="https://www.behance.net/nmtuaans" target="_blank" class="box4">
+			<div class="photo">
+				<img src="img/4.png">
+			</div>
+		</a>
+
+		<a href="contact.html" class="contact">
+			<span>CONTACT<span>
+		</a>
+
+		<div class="box">CONTACT</div>
+		
+		<a href="mailto:nmtuaans@gmail.com" class="gmail">nmtuaans@gmail.com</a>
+
+		<div class="form">
+		<form action="https://api.web3forms.com/submit" method="POST">
+		<input type="hidden" name="access_key" value="32dc665b-95f3-4802-9005-2bced7dff03d">
+		send something...<br>
+		<input type="text" placeholder="name" name="name" class="name" required>
+		<input type="email" placeholder="mail" name="email" class="email" required><br>
+		<input type="text" placeholder="message" name="message" class="message" required><br>
+		<input type="submit" value="SEND" class="send">
+		<input type="reset" value="RESET" class="reset">
+		</form>
+		</div>
+			
+		<div class="git">get in ʇouch</div>
+
+		</div>
+		
+		<div class="cursor">
+    	<img src="img/cursor.png">
+		</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="cursor.js"></script>
